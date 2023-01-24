@@ -1,0 +1,15 @@
+{
+  "name": "task-manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "milad karimi <izi.bizines@gmail.com> (http://www.jsbaroon.com/)",
+  "license": "MIT",
+  "dependencies": {
+    "mongoose": "6.8.4"
+  }
+}
