@@ -76,12 +76,21 @@ router.delete('/users/me', auth, async (req, res) => {
         await req.user.remove();
         res.send(req.user)
     } catch (e) {
-        res.status(500).send(e)
+        res.status(500).send(e);
     }
 });
 
 const upload = multer({
-    dest: 'avatars'
+    dest: 'avatars',
+    limits: {
+        fileSize: 1024 * 1024
+    },
+    fileFilter(req, file, cb) {
+        if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
+            return cb(new Error('Please upload an image'));
+        }
+        cb(undefined, true);
+    }
 });
 router.post('/users/me/avatar', upload.single('avatar'), (req, res) => {
     res.send();
